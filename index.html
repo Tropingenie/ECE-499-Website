@@ -42,19 +42,55 @@
 <h2>About the Team</h2>
 <p>Jensen Gillett - Computer Engineering - Team Lead - <a href="https://github.com/jensengillett">GitHub</a></p>
 <p>Ben Lyne - Computer Engineering - Hardware Design - <a href="https://github.com/Tropingenie">GitHub</a></p>
-<p>Elliot Starchuk - Computer Engineering - Software Design - <a href="https://github.com/estarchuk">GitHub</a></p>
+<p>Elliott Starchuk - Computer Engineering - Software Design - <a href="https://github.com/estarchuk">GitHub</a></p>
 
 <br>
 <h2>Background</h2>
-<p>Need for the project, i.e. what is the social issue the project is trying to address.</p>
+<p>Need for the project, i.e. what is the social issue the project is trying to address. (remove this line when finalized)
+<br>
+<br>This project was suggested by <a href="https://nozzleninja.com">Nozzle Ninja</a>, an agricultural supply retailer in Stettler, Alberta.<br>
+<br>Nozzle Ninja sought to create a reduced cost device that interfaces between an ISOBUS display<br>
+and the nozzles of a tow-behind sprayer. Current per-nozzle control systems can retail around
+<br>$12,000, and by creating a lower-cost alternative, enables farmers to make their operations
+<br>more cost-effective and environmentally friendly. Further, the device could serve to lower the
+<br>barrier of entry to farming by allowing new farmers to access what previously was a high cost, 
+<br>sophisticated system.
+</p>
 
 <br>
 <h2>Design</h2>
-<p>How is the problem addressed by the team.</p>
+<p>How is the problem addressed by the team. (remove this line when finalized)
+<br>
+<br>To create a prototype, the team opted for a two unit solution. One unit would be the command unit,
+<br>which stands in for a high cost ISOBUS display, while the other unit would be the actuator unit, responsible
+<br>for actuating the nozzles. All design documents, including circuit schematics, PCB designs, and software
+<br>can be found on the project <a href="https://github.com/Tropingenie/ECE-499">GitHub</a>.
+<br><br>***insert hardware design blurb here***
+<br><br> The software of the prototype was written using C++ using C-style linkages. C++ was chosen as the language
+<br>of implementation because of <a href="https://github.com/Open-Agriculture/AgIsoStack-plus-plus">AgIsoStack++</a>, the programming library that was chosen to implement ISOBUS
+<br>communication. The command unit software was responsible for handling user input from a rotary encoder/button
+<br>combo, while the actuator unit software was responsible for actuating the connected nozzles.
+</p>
 
 <br>
-<h2>Results/Findings</h2>
-<p>Some significant results.</p>
+<h2>Results</h2>
+<p>Some significant results. (remove this line when finalized)
+<br>
+<br>The final prototype provides a good starting point for a more fully featured future design, despite some setbacks
+<br>during the prototyping process.
+<br><br>One issue encountered during prototyping was the unfortunate failure of one of the Canbus modules, which was
+<br>going to be used in order to implement ISOBUS communication. Due to time constraints, a replacement was not
+<br>sourced, and the team instead pivoted to using UART communication between the two units.
+<br><br>Another issue encountered was the rotary encoder, a pivotal part of the user interface, displaying inaccurate and
+<br>unexpected behaviour. After some investigation, the team uncovered the cause of the behaviour. Unable to correct
+<br>this behaviour in hardware, a software rewrite for the command unit was initiated, which was successful in surpressing
+<br>the unintended behaviour.
+<br><br>The final prototype met the original specifications of having the command and actuator unit communicate with
+<br>each other, as well as the having the actuator unit act on commands sent from the command unit. Although no
+<br>nozzles were attached to the actuator unit, LEDs were used to simulate the actuating of nozzles. 
+<br><br>***insert picture of finalized prototype***
+<br><br>***extra blurb from the picture here (if required)
+</p>
 
 <br>
 <h2>Acknowledgement</h2>
