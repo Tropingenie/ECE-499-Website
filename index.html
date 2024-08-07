@@ -46,9 +46,7 @@
 
 <br>
 <h2>Background</h2>
-<p>Need for the project, i.e. what is the social issue the project is trying to address. (remove this line when finalized)
-<br>
-<br>This project was suggested by <a href="https://nozzleninja.com">Nozzle Ninja</a>, an agricultural supply retailer in Stettler, Alberta.<br>
+<p>This project was suggested by <a href="https://nozzleninja.com">Nozzle Ninja</a>, an agricultural supply retailer in Stettler, Alberta.<br>
 <br>Nozzle Ninja sought to create a reduced cost device that interfaces between an ISOBUS display<br>
 and the nozzles of a tow-behind sprayer. Current per-nozzle control systems can retail around
 <br>$12,000, and by creating a lower-cost alternative, enables farmers to make their operations
@@ -59,13 +57,18 @@ and the nozzles of a tow-behind sprayer. Current per-nozzle control systems can 
 
 <br>
 <h2>Design</h2>
-<p>How is the problem addressed by the team. (remove this line when finalized)
-<br>
-<br>To create a prototype, the team opted for a two unit solution. One unit would be the command unit,
+<p>
+To create a prototype, the team opted for a two unit solution. One unit would be the command unit,
 <br>which stands in for a high cost ISOBUS display, while the other unit would be the actuator unit, responsible
 <br>for actuating the nozzles. All design documents, including circuit schematics, PCB designs, and software
 <br>can be found on the project <a href="https://github.com/Tropingenie/ECE-499">GitHub</a>.
-<br><br>***insert hardware design blurb here***
+<br><br>Each unit is centered around a Xiao ESP32-C3 microcontroller. Each unit contains a shared design PCB
+<br>to cut down on manufacturing costs. Each PCB contains two main voltage rails: a 12V and a 5V rail. The 12V
+<br>rail is used to control the actuators, as well as supplying the 5V rail after passing through a 5V regulator.
+<br>The microcontroller's use 3v3 logic to control connected peripherals, so in order for the actuator unit to control
+<br>the actuators, MOSFETs are used. In addition to power connections, the PCBs also contain a debounce circuit, used
+<br>to debounce the hardware inputs on the command unit. A block diagram of the hardware can be seen below.
+<br><br><img alt="" src="images/image14.png" style="width: 450px;"> <!--This can be changed if the photo is too small.-->
 <br><br> The software of the prototype was written using C++ using C-style linkages. C++ was chosen as the language
 <br>of implementation because of <a href="https://github.com/Open-Agriculture/AgIsoStack-plus-plus">AgIsoStack++</a>, the programming library that was chosen to implement ISOBUS
 <br>communication. The command unit software was responsible for handling user input from a rotary encoder/button
@@ -74,9 +77,8 @@ and the nozzles of a tow-behind sprayer. Current per-nozzle control systems can 
 
 <br>
 <h2>Results</h2>
-<p>Some significant results. (remove this line when finalized)
-<br>
-<br>The final prototype provides a good starting point for a more fully featured future design, despite some setbacks
+<p>
+The final prototype provides a good starting point for a more fully featured future design, despite some setbacks
 <br>during the prototyping process.
 <br><br>One issue encountered during prototyping was the unfortunate failure of one of the Canbus modules, which was
 <br>going to be used in order to implement ISOBUS communication. Due to time constraints, a replacement was not
@@ -87,9 +89,9 @@ and the nozzles of a tow-behind sprayer. Current per-nozzle control systems can 
 <br>the unintended behaviour.
 <br><br>The final prototype met the original specifications of having the command and actuator unit communicate with
 <br>each other, as well as the having the actuator unit act on commands sent from the command unit. Although no
-<br>nozzles were attached to the actuator unit, LEDs were used to simulate the actuating of nozzles. 
-<br><br>***insert picture of finalized prototype***
-<br><br>***extra blurb from the picture here (if required)
+<br>nozzles were attached to the actuator unit, LEDs were used to simulate the actuating of nozzles.
+<br><br>A finalized prototype can be seen below, with the actuator unit on the left, and the command unit on the right. 
+<br><br><img alt="" src="images/image6.png" style="width: 450px;"> <!--This can be changed if the photo is too small.-->
 </p>
 
 <br>
