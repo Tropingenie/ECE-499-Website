@@ -46,52 +46,52 @@
 
 <br>
 <h2>Background</h2>
-<p>This project was suggested by <a href="https://nozzleninja.com">Nozzle Ninja</a>, an agricultural supply retailer in Stettler, Alberta.<br>
-<br>Nozzle Ninja sought to create a reduced cost device that interfaces between an ISOBUS display<br>
-and the nozzles of a tow-behind sprayer. Current per-nozzle control systems can retail around
-<br>$12,000, and by creating a lower-cost alternative, enables farmers to make their operations
-<br>more cost-effective and environmentally friendly. Further, the device could serve to lower the
-<br>barrier of entry to farming by allowing new farmers to access what previously was a high cost, 
-<br>sophisticated system.
+<p>This project was suggested by <a href="https://nozzleninja.com">Nozzle Ninja</a>, an agricultural supply retailer in Stettler, Alberta.
+<br>Nozzle Ninja sought to create a reduced cost device that interfaces between an ISOBUS display
+and the nozzles of a tow-behind sprayer[1]. <br>Current per-nozzle control systems can retail around
+$12,000[1], and by creating a lower-cost alternative, enables farmers to make their operations
+more cost-effective and environmentally friendly. <br>Further, the device could serve to lower the
+barrier of entry to farming by allowing new farmers to access what previously was a high cost,
+sophisticated system.
 </p>
 
 <br>
 <h2>Design</h2>
 <p>
 To create a prototype, the team opted for a two unit solution. One unit would be the command unit,
-<br>which stands in for a high cost ISOBUS display, while the other unit would be the actuator unit, responsible
-<br>for actuating the nozzles. All design documents, including circuit schematics, PCB designs, and software
-<br>can be found on the project <a href="https://github.com/Tropingenie/ECE-499">GitHub</a>.
-<br><br>Each unit is centered around a Xiao ESP32-C3 microcontroller. Each unit contains a shared design PCB
-<br>to cut down on manufacturing costs. Each PCB contains two main voltage rails: a 12V and a 5V rail. The 12V
-<br>rail is used to control the actuators, as well as supplying the 5V rail after passing through a 5V regulator.
-<br>The microcontroller's use 3v3 logic to control connected peripherals, so in order for the actuator unit to control
-<br>the actuators, MOSFETs are used. In addition to power connections, the PCBs also contain a debounce circuit, used
-<br>to debounce the hardware inputs on the command unit. A block diagram of the hardware can be seen below.
-<br><br><img alt="" src="images/image14.png" style="width: 450px;"> <!--This can be changed if the photo is too small.-->
-<br><br> The software of the prototype was written using C++ using C-style linkages. C++ was chosen as the language
-<br>of implementation because of <a href="https://github.com/Open-Agriculture/AgIsoStack-plus-plus">AgIsoStack++</a>, the programming library that was chosen to implement ISOBUS
-<br>communication. The command unit software was responsible for handling user input from a rotary encoder/button
-<br>combo, while the actuator unit software was responsible for actuating the connected nozzles.
+which stands in for a high cost ISOBUS display, while the other unit would be the actuator unit, responsible
+for actuating the nozzles. <br>All design documents, including circuit schematics, PCB designs, and software
+can be found on the project <a href="https://github.com/Tropingenie/ECE-499">GitHub</a>.
+<br><br>Each unit is centered around a Xiao ESP32-C3 microcontroller[2], and contains a shared design PCB
+to cut down on manufacturing costs. <br>Each PCB contains two main voltage rails: a 12V and a 5V rail. The 12V
+rail is used to control the actuators, as well as supplying the 5V rail after passing through a 5V regulator.
+<br>The microcontrollers use 3v3 logic to control connected peripherals, so in order for the actuator unit to control
+the actuators, MOSFETs are used[3]. <br>In addition to power connections, the PCBs also contain a debounce circuit, used
+to debounce the hardware inputs on the command unit. <br>A block diagram of the hardware can be seen below.
+<br><br><img alt="" src="images/image14.png" style="width: 600px;"> <!--This can be changed if the photo is too small.-->
+<br><br> The software of the prototype was written using C++ using C-style linkages. <br>C++ was chosen as the language
+of implementation because of <a href="https://github.com/Open-Agriculture/AgIsoStack-plus-plus">AgIsoStack++[4]</a>, the programming library that was chosen to implement ISOBUS
+communication. <br>The command unit software was responsible for handling user input from a rotary encoder/button
+combo, while the actuator unit software was responsible for actuating the connected nozzles.
 </p>
 
 <br>
 <h2>Results</h2>
 <p>
 The final prototype provides a good starting point for a more fully featured future design, despite some setbacks
-<br>during the prototyping process.
-<br><br>One issue encountered during prototyping was the unfortunate failure of one of the Canbus modules, which was
-<br>going to be used in order to implement ISOBUS communication. Due to time constraints, a replacement was not
-<br>sourced, and the team instead pivoted to using UART communication between the two units.
+during the prototyping process.
+<br><br>One issue encountered during prototyping was the unfortunate failure of one of the CAN bus modules[5], which was
+going to be used in order to implement ISOBUS communication. <br>Due to time constraints, a replacement was not
+sourced, and the team instead pivoted to using UART communication between the two units.
 <br><br>Another issue encountered was the rotary encoder, a pivotal part of the user interface, displaying inaccurate and
-<br>unexpected behaviour. After some investigation, the team uncovered the cause of the behaviour. Unable to correct
-<br>this behaviour in hardware, a software rewrite for the command unit was initiated, which was successful in surpressing
-<br>the unintended behaviour.
+unexpected behaviour. <br>After some investigation, the team uncovered the cause of the behaviour. <br>Unable to correct
+this behaviour in hardware, a software rewrite for the command unit was initiated, which was successful in suppressing
+the unintended behaviour.
 <br><br>The final prototype met the original specifications of having the command and actuator unit communicate with
-<br>each other, as well as the having the actuator unit act on commands sent from the command unit. Although no
-<br>nozzles were attached to the actuator unit, LEDs were used to simulate the actuating of nozzles.
+each other, as well as the having the actuator unit act on commands sent from the command unit. <br>Although no
+nozzles were attached to the actuator unit, LEDs were used to simulate the actuating of nozzles.
 <br><br>A finalized prototype can be seen below, with the actuator unit on the left, and the command unit on the right. 
-<br><br><img alt="" src="images/image6.png" style="width: 450px;"> <!--This can be changed if the photo is too small.-->
+<br><br><img alt="" src="images/image6.png" style="width: 600px;"> <!--This can be changed if the photo is too small.-->
 </p>
 
 <br>
@@ -105,6 +105,17 @@ The final prototype provides a good starting point for a more fully featured fut
 
 <br>
 <h2>Final Report</h2>
-<p>Link to final report from webpage.</p>
+<p>You can download a copy of the final report from the link below.
+<br><a href="report/Group6_Final_Report.pdf">Final Report</a></p>
 </body>
 </html>
+
+<br>
+<h2>References</h2>
+<p>
+    [1] M. Wengryn, private communication. May 2024.
+    <br>[2] “Seeed Studio XIAO ESP32C3 - RISC-V tiny MCU board with Wi-Fi and Bluetooth5.0, battery charge supported, power efficiency and rich interface,” seeedstudio.com. Accessed Jun. 18, 2024. [Online]. Available: <a href="https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html">https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html</a>.
+    <br>[3] N-Channel Enhancement Mode MOSFET, DMN2004WK, no. DS30934, Rev. 6-2, Diodes Inc., 2024. Accessed Jun. 18, 2024. [Online]. Available: <a href="https://www.diodes.com/assets/Datasheets/DMN2004WK.pdf">https://www.diodes.com/assets/Datasheets/DMN2004WK.pdf.</a>
+    <br>[4] A. Del Grosso et al., AgIsoStack++. Open-Agriculture/AgIsoStack-plus-plus. (2024). Open Agriculture. Accessed May 16, 2024. [Online]. Available: <a href="https://github.com/Open-Agriculture/AgIsoStack-plus-plus">https://github.com/Open-Agriculture/AgIsoStack-plus-plus.</a>
+    <br>[5] High-Speed CAN Transceiver with Standby Mode CAN FD Ready, ATA6560/1, no. DS20005991B, Microchip Technology Inc., 2019. Accessed Jun. 18, 2024. [Online]. Available: <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/20005991B.pdf">https://ww1.microchip.com/downloads/en/DeviceDoc/20005991B.pdf.</a>
+</p>
